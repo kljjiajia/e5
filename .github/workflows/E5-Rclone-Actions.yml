@@ -59,4 +59,9 @@ jobs:
          git config --global user.name "kljjiajia"
          git add .
          git commit -am "new rclone config"
-         git push
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # 如果你使用的是 Personal Access Token
+        run: |
+          git push https://${GITHUB_TOKEN}@github.com/kljjiajia/e5.git HEAD:main
